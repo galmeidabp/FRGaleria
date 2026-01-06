@@ -1,0 +1,6 @@
+ <div>
+        <img src={gatinho} alt="Imagem de gatinho dormindo em cima de um piano" />
+        <h1>Quadro em destaque</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, excepturi enim veritatis aliquam quod accusantium nulla. Sequi assumenda non, voluptate, voluptas, esse dignissimos id at possimus aperiam corrupti laudantium iusto. Lorem ipsum dolor sit amet consectetur adipisicing elit. Id sapiente exercitationem accusamus? Consequuntur tempore voluptatum consectetur, explicabo, quidem debitis, pariatur doloribus facere provident voluptas in ullam culpa ut. Assumenda, culpa. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id voluptatibus sed sit rerum doloremque, in deleniti tenetur voluptates labore voluptate obcaecati esse itaque. Deserunt quae nesciunt vitae accusantium neque officia? Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae iure sed optio magni repellat maiores voluptatum beatae, ut adipisci nam architecto deserunt. Ab nam velit quo! At ex commodi dolor?</p>
+        <button>Adquirir</button>
+      </div>
