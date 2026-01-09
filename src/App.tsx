@@ -1,13 +1,18 @@
-import { Carousel } from "./components/Carousel";
-import { Header } from "./components/Header";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Contact } from "./pages/Contact";
+import { About } from "./pages/About";
 
 export function App() {
 
   return (
-    <>
-      <Header />
-      <Carousel />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
