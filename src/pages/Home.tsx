@@ -5,11 +5,11 @@ import { Header } from "../layout/Header";
 
 export function Home() {
   return (
-    <>
+    <div>
       <Header />
       <Carousel />
       <Art />
       <Footer />
-    </>
+    </div>
   )
 }

@@ -14,7 +14,7 @@ export function CarouselCard() {
           <li>Técnica: Óleo sobre tela</li>
           <li>Dimensões: 73,7 x 72,1 cm</li>
         </ul>
-        <button className="text-white font-inika bg-green-900 border-2 border-green-900 rounded-md py-3 px-12 text-lg mt-3 hover:bg-transparent hover:text-green-900 hover:font-bold">Adquirir</button>
+        <button className="text-white font-inika bg-green-900 border-2 border-green-900 rounded-md py-3 px-12 text-lg mt-3 hover:bg-transparent hover:text-green-900 hover:font-bold hover:cursor-pointer">Adquirir</button>
       </div>
     </div>
   )

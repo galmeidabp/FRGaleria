@@ -12,7 +12,7 @@ export function ArtCard() {
           <li>Técnica: Óleo sobre tela</li>
           <li>Dimensões: 73,7 x 72,1 cm</li>
         </ul>
-        <button className="text-green-900 font-inika font-bold bg-transparent border-2 mb-10 border-green-900 rounded-md py-2 px-12 text-lg mt-5 lg:py-4 lg:px-16 lg:text-2xl hover:bg-green-900 hover:text-white">Adquirir</button>
+        <button className="text-green-900 font-inika font-bold bg-transparent border-2 mb-10 border-green-900 rounded-md py-2 px-12 text-lg mt-5 lg:py-4 lg:px-16 lg:text-2xl hover:bg-green-900 hover:text-white hover:cursor-pointer">Adquirir</button>
       </div>
     </div>
   )
