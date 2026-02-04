@@ -1,22 +1,56 @@
-import { Menu } from "lucide-react";
+import { ChevronRight, Menu, X } from "lucide-react";
+import { useState } from "react";
+import { LinkHeaders } from "../components/details/LinksHeader";
 
 export function Header() {
+  const [openMenu, setOpenMenu] = useState(false)
+
+  function toggleMenu() {
+    setOpenMenu((atualState) => !atualState)
+  }
+
   return (
     <div className="bg-green-900">
-      <div className="flex justify-center max-w-2xs gap-3 m-auto items-center py-5 md:max-w-2xl md:justify-between lg:max-w-4xl">
+      <div className="flex justify-between max-w-2xs gap-3 m-auto items-center py-3 md:max-w-2xl lg:max-w-4xl">
         <a href="/" className="flex gap-3 items-center">
-          <img src="/logo.svg" alt="" className="w-16" />
-          <p className="text-gradient-gold text-4xl font-italianno">Galeria de Arte</p>
+          <img src="/logo.svg" alt="" className="w-12 md:w-16" />
+          <p className="text-gradient-gold text-2xl font-italianno md:text-4xl">Galeria de Arte</p>
         </a>
 
-        <Menu className="text-white block md:hidden" />
-
-        <ul className="hidden gap-5 text-l font-inika md:flex">
-          <li className="beige-100 relative inline-block after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-[linear-gradient(90deg,#dcc285,#be8e34,#e2c16f,#a1843d)] after:transition-transform after:duration-300 focus:outline-none  hover:after:scale-x-100 focus:after:scale-x-100 hover:text-yellow-100"><a href="/">Home</a></li>
-          <li className="beige-100 relative inline-block after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-[linear-gradient(90deg,#dcc285,#be8e34,#e2c16f,#a1843d)] after:transition-transform after:duration-300 focus:outline-none  hover:after:scale-x-100 focus:after:scale-x-100 hover:text-yellow-100"><a href="/contact">Contato</a></li>
-          <li className="beige-100 relative inline-block after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-[linear-gradient(90deg,#dcc285,#be8e34,#e2c16f,#a1843d)] after:transition-transform after:duration-300 focus:outline-none  hover:after:scale-x-100 focus:after:scale-x-100 hover:text-yellow-100"><a href="/about">Quem somos</a></li>
+        <ul className="hidden gap-5 text-lg md:flex">
+          <li><LinkHeaders path="/" name="Home" /></li>
+          <li><LinkHeaders path="/artists" name="Artistas" /></li>
+          <li><LinkHeaders path="/contact" name="Contato" /></li>
+          <li><LinkHeaders path="/info" name="Informações" /></li>
         </ul>
+
+        <button onClick={toggleMenu} aria-label="Abrir menu" aria-expanded={openMenu}><Menu size={24} className="text-white block md:hidden" /></button>
+
       </div>
-    </div> 
+
+      {openMenu && (
+        <div className="fixed inset-0 bg-black/60 z-40" onClick={toggleMenu} />
+      )}
+
+      <nav className={`${openMenu ? "translate-x-0" : "translate-x-full"} fixed right-0 top-0 w-50 h-screen flex flex-col bg-green-900 z-50 transform transition-transform duration-300`}>
+
+        <div className="flex justify-between items-start m-3 border-b-2 pb-2">
+          <a href="/">
+            <img src="/logo.svg" alt="" className="w-14" />
+            <p className="text-gradient-gold text-2xl font-italianno">Galeria de Arte</p>
+          </a>
+          <button className="flex items-center justify-center" onClick={toggleMenu} aria-expanded={openMenu}><X size={23} className="text-white" /></button>
+        </div>
+
+
+        <ul className="flex flex-col p-5 gap-3">
+          <li className="border-b flex items-center justify-between pb-2"><LinkHeaders path="/" name="Home" /><ChevronRight size={16} /></li>
+          <li className="border-b flex items-center justify-between pb-2"><LinkHeaders path="/artists" name="Artistas" /><ChevronRight size={16} /></li>
+          <li className="border-b flex items-center justify-between pb-2"><LinkHeaders path="/contact" name="Contato" /><ChevronRight size={16} /></li>
+          <li className="border-b flex items-center justify-between pb-2"><LinkHeaders path="/info" name="Informações" /><ChevronRight size={16} /></li>
+        </ul>
+      </nav>
+
+    </div>
   )
 }

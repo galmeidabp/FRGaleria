@@ -1,18 +1,31 @@
-export function ArtCard() {
+import type { Art } from "../../types/art"
+import { Link } from "react-router-dom"
+import { Button } from "../details/Button"
+
+type ArtCardProps = {
+  art: Art
+}
+
+export function ArtCard({ art }: ArtCardProps) {
   return (
-    <div className="flex flex-col gap-3 mt-5 border-b-2 border-green-900 lg:gap-8">
-      <div className="w-72 h-72 flex items-center justify-center md:w-79 md:h-79 lg:w-104 lg:h-104">
-        <img src="./gatinho.png" alt="" className="w-auto h-auto max-w-full max-h-full object-contain" />
+    <div className="flex flex-col gap-3 mt-5 border-b-2 border-green-900 pb-8">
+      <div className="w-72 h-72 flex items-center justify-center">
+        <img src={art.image_url} alt={art.title} className="w-full h-full object-contain" />
       </div>
+
       <div>
-        <h3 className="font-inika font-semibold text-lg text-brown-900 md:text-xl lg:text-3xl">Título do Quadro de Gatinho</h3>
-        <ul className="text-sm leading-[1.3] text-brown-900 font-inter lg:text-lg">
-          <li>Artista Sobrenome</li>
-          <li>Ano: 1999</li>
-          <li>Técnica: Óleo sobre tela</li>
-          <li>Dimensões: 73,7 x 72,1 cm</li>
+        <h3 className="font-semibold text-lg md:text-3xl">{art.title}</h3>
+
+        <ul className="text-sm mb-5 lg:text-lg">
+          <li className="underline">{art.artist}</li>
+          <li><strong>Ano:</strong> {art.year}</li>
+          <li><strong>Técnica:</strong> {art.technique}</li>
+          <li><strong>Dimensões:</strong> {art.width} x {art.height} cm</li>
         </ul>
-        <button className="text-green-900 font-inika font-bold bg-transparent border-2 mb-10 border-green-900 rounded-md py-2 px-12 text-lg mt-5 lg:py-4 lg:px-16 lg:text-2xl hover:bg-green-900 hover:text-white hover:cursor-pointer">Adquirir</button>
+
+        <Link to={`/obras/${art.slug}`}>
+          <Button variant="secondary">Adquirir</Button>
+        </Link>
       </div>
     </div>
   )

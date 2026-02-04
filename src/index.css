@@ -1,6 +1,20 @@
-@import url(https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Italianno&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Italianno&display=swap);
+
 @import "tailwindcss";
 
+:root {
+  font-family: 'Inter', sans-serif;
+  --gradient-gold: linear-gradient(90deg,
+      #dcc285,
+      #be8e34,
+      #e2c16f,
+      #a1843d);
+}
+
+@theme {
+  --color-beige-100: #DCC285;
+  --color-brown-900: #27180A;
+}
 
 @layer utilities {
   .font-inter {
@@ -11,10 +25,6 @@
     font-family: 'Italianno', cursive;
   }
 
-  .font-inika {
-    font-family: 'Inika', serif;
-  }
-
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(90deg,
@@ -22,6 +32,9 @@
         #be8e34,
         #e2c16f,
         #a1843d);
+  }
+  .underline-gold {
+    @apply relative inline-block;
   }
 
   .beige-100 {
@@ -47,7 +60,6 @@
     transform: scale(1.2);
   }
 
-
   @media (max-width: 1020px) {
 
     .swiper-button-next,
@@ -56,15 +68,14 @@
     }
   }
 
-
   /* PAGINATION */
   .swiper-pagination-bullet {
-    @apply bg-green-900;
-    opacity: 1 !important;
+    background-color: #14532d !important;
+    opacity: 0.5 !important;
   }
 
   .swiper-pagination-bullet-active {
-    @apply bg-green-900;
+    background-color: #14532d !important;
     opacity: 1 !important;
   }
 

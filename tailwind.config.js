@@ -8,7 +8,10 @@ export default {
       fontFamily: {
         italianno: ['Italianno', 'cursive'],
         inter: ['Inter', 'sans-serif']
-      }
+      },
+      backgroundImage: {
+        "gold-gradient": "var(--gradient-gold)",
+      },
     },
   },
   plugins: [],

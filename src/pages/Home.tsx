@@ -1,15 +1,14 @@
 import { Art } from "../components/Art";
 import { Carousel } from "../components/Carousel";
-import { Footer } from "../layout/Footer";
-import { Header } from "../layout/Header";
+import { useArts } from "../hook/useArts";
 
 export function Home() {
+  const {carouselArts} = useArts()
+
   return (
     <div>
-      <Header />
-      <Carousel />
+      <Carousel arts={carouselArts} />
       <Art />
-      <Footer />
     </div>
   )
 }
