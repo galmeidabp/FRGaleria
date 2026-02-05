@@ -1,25 +1,79 @@
-import { useForm } from "@formspree/react";
 import { Button } from "./details/Button";
 import { MailCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { contactSchema, type ContactFormData } from "../schema/contactSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+
+const baseInput =
+  "w-full h-10 border rounded-md p-2 outline-none transition-all duration-200 font-inter"
+
+function inputClass(hasError: boolean, disabled?: boolean) {
+  if (disabled) {
+    return `${baseInput} opacity-50 cursor-not-allowed bg-gray-100`
+  }
+
+  if (hasError) {
+    return `${baseInput} border-red-600 focus:border-red-600 focus:ring-1 focus:ring-red-200`
+  }
+
+  return `${baseInput} border-green-900 focus:border-green-600 focus:ring-1 focus:ring-green-900`
+}
 
 export function ContactForm() {
-  const [state, handleSubmit] = useForm("xzddbdlk")
+
+
   const navigate = useNavigate()
-  if (state.succeeded) {
+  const [success, setSuccess] = useState(false)
+
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting, errors }
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema)
+  })
+
+  async function onSubmit(data: ContactFormData) {
+    try {
+      const res = await fetch("https://formspree.io/f/xzddbdlk", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+
+      if (!res.ok) throw new Error("Erro ao enviar")
+
+      console.log("Email enviado com sucesso")
+
+      setSuccess(true)
+    } catch (err) {
+      console.error("Erro ao enviar email", err)
+    }
+  }
+
+  if (success) {
     return (
       <div className="flex flex-col items-center justify-center">
         <MailCheck className="text-green-900 mb-3" size={38} />
         <h3 className="text-xl font-semibold">Email enviado</h3>
-        <p className="mb-5">Agradecemos sua mensagem. Em breve retornaremos o contato.</p>
+        <p className="mb-5">
+          Agradecemos sua mensagem. Em breve retornaremos o contato.
+        </p>
 
-        <Button onClick={() => navigate("/")}>Voltar para galeria</Button>
+        <Button onClick={() => navigate("/")}>
+          Continuar
+        </Button>
       </div>
     )
   }
 
+
   return (
-    <form className="grid gap-y-6" onSubmit={handleSubmit}>
+    <form className="grid gap-y-6" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-1.5">
         <label
           className="block font-inter text-brown-900"
@@ -29,10 +83,10 @@ export function ContactForm() {
         </label>
 
         <input
-          className="h-10 border p-2 border-green-900 rounded-md"
+          disabled={isSubmitting}
+          className={inputClass(!!errors.name, isSubmitting)}
           id="name"
-          name="name"
-          required
+          {...register("name")}
         />
       </div>
 
@@ -46,10 +100,11 @@ export function ContactForm() {
         </label>
 
         <input
-          className="h-10 border p-2 border-green-900 rounded-md"
+          className={inputClass(!!errors.email, isSubmitting)}
+          disabled={isSubmitting}
           id="email"
-          name="email"
-          required
+          type="email"
+          {...register("email")}
         />
       </div>
 
@@ -62,16 +117,16 @@ export function ContactForm() {
           Escreva a sua mensagem
         </label>
         <textarea
-          className="h-30 border p-2 resize-none border-green-900 rounded-md"
+          disabled={isSubmitting}
+          className={inputClass(!!errors.message, isSubmitting) + " h-32"}
           id="message"
-          name="message"
-          required
+          {...register("message")}
         />
       </div>
 
 
       <div className="flex flex-row-reverse gap-x-6">
-        <Button disabled={state.submitting} type="submit">Enviar</Button>
+        <Button disabled={isSubmitting} type="submit">{isSubmitting ? "Enviando" : "Enviar"}</Button>
       </div>
     </form>
   );
