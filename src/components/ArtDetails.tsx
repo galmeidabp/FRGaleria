@@ -2,17 +2,27 @@ import { useParams } from "react-router-dom"
 import { useArts } from "../hook/useArts"
 import { DetailsCard } from "./cards/DetailsCard"
 import { Button } from "./details/Button"
+import { ErrorPage } from "../errors/ErrorPage"
+import { DetailsCardSkeleton } from "../skeletons/DetailsCardSkeleton"
 
 export function ArtDetails() {
   const { slug } = useParams<{ slug: string }>()
   const { arts, loading } = useArts()
 
-  if (loading) return <p>Carregando...</p>
 
   const art = arts.find(item => item.slug === slug)
-
+  if (loading) {
+    return (
+      <div className="max-w-2xs m-auto mt-16 md:max-w-2xl lg:max-w-4xl">
+        <div className="grid grid-cols-1 text-brown-900 font-inter lg:grid-cols-[2fr_1.6fr]">
+          <DetailsCardSkeleton />
+        </div>
+      </div>
+    );
+  }
+  
   if (!art) {
-    return <h1>Obra não encontrada</h1>
+    return <ErrorPage />
   }
 
   const message = encodeURIComponent(`Olá! Gostaria de adquirir o quadro "${art.title}"`)

@@ -4,6 +4,7 @@ import { Contact } from "./pages/Contact";
 import { Info } from "./pages/Info";
 import { MainLayout } from "./layout/MainLayout";
 import { ArtDetails } from "./components/ArtDetails";
+import { ErrorPage } from "./errors/ErrorPage";
 
 export function App() {
 
@@ -15,6 +16,7 @@ export function App() {
           <Route path="/obras/:slug" element={<ArtDetails />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/info" element={<Info />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

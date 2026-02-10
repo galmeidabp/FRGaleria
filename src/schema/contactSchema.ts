@@ -13,6 +13,8 @@ export const contactSchema = z.object({
   message: z
     .string()
     .min(5, "Mensagem muito curta"),
+
+  newsletter: z.enum(["sim", "nao"]).optional(),
 })
 
 export type ContactFormData = z.infer<typeof contactSchema>

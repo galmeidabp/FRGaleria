@@ -32,7 +32,10 @@ export function ContactForm() {
     handleSubmit,
     formState: { isSubmitting, errors }
   } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema)
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      newsletter: "sim"
+    }
   })
 
   async function onSubmit(data: ContactFormData) {
@@ -124,8 +127,17 @@ export function ContactForm() {
         />
       </div>
 
+      <input type="hidden" {...register("newsletter")} value="nao" />
+
+      <label className="flex gap-2 text-xs lg:text-smz">
+        <input type="checkbox" className="outline-none cursor-pointer" value="sim" {...register("newsletter")} />
+        Quero receber novidades através do email
+      </label>
+
+
 
       <div className="flex flex-row-reverse gap-x-6">
+
         <Button disabled={isSubmitting} type="submit">{isSubmitting ? "Enviando" : "Enviar"}</Button>
       </div>
     </form>

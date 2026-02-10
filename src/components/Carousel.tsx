@@ -10,7 +10,6 @@ type CarouselProps = {
 }
 
 export function Carousel({arts}: CarouselProps) {
-
   return (
     <div>
       <Swiper

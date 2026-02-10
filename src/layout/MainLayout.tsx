@@ -1,12 +1,23 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { Breadcrumb } from "../components/details/Breadcrumb";
+import { useDeferredValue } from "react";
+import { PageLoader } from "../loaders/PageLoader";
 
 export function MainLayout() {
+  const location = useLocation();
+  const deferredPath = useDeferredValue(location.pathname);
+
+  const loading = deferredPath !== location.pathname;
+
   return (
     <div className="min-h-screen flex flex-col">
+      {loading && <PageLoader />}
+
       <Header />
       <main className="flex-1">
+        <Breadcrumb />
         <Outlet />
       </main>
       <a
@@ -18,7 +29,7 @@ export function MainLayout() {
         <img src="whatsappicon.svg" alt="Ícone do WhatsApp" />
       </a>
 
-      <Footer /> 
+      <Footer />
     </div>
   )
 }

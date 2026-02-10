@@ -10,7 +10,7 @@ export function DetailsCard({ art }: DetailsCardProps) {
     art.image_url,
     ...(art.art_images?.map(img => img.url) || [])
   ]
-
+  
   const [current, setCurrent] = useState(0)
   const [zoomOpen, setZoomOpen] = useState(false)
   const [scale, setScale] = useState(1)
