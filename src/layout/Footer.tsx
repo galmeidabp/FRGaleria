@@ -19,10 +19,10 @@ export function Footer() {
 
         <div className="flex flex-col items-center justify-center gap-1 mt-5">
           <h4 className="text-gradient-gold text-4xl font-italianno lg:text-4xl">Políticas</h4>
-          <a className="flex gap-2 items-center text-xs md:text-sm hover:text-yellow-100" href="#">Política de Privacidade</a>
-          <a className="flex gap-2 items-center text-xs md:text-sm hover:text-yellow-100" href="#">Termos de Uso</a>
-          <a className="flex gap-2 items-center text-xs md:text-sm hover:text-yellow-100" href="#">Política de Cookies</a>
-          <a className="flex gap-2 items-center text-xs md:text-sm hover:text-yellow-100" href="#">Direitos Autorais</a>
+          <a className="flex gap-2 items-center text-xs md:text-sm hover:text-yellow-100" href="/privacyterms">Política de Privacidade</a>
+          <a className="flex gap-2 items-center text-xs md:text-sm hover:text-yellow-100" href="/termsofuse">Termos de Uso</a>
+          <a className="flex gap-2 items-center text-xs md:text-sm hover:text-yellow-100" href="/cookiepolicy">Política de Cookies</a>
+          <a className="flex gap-2 items-center text-xs md:text-sm hover:text-yellow-100" href="/copyright">Direitos Autorais</a>
         </div>
  
       </div>
