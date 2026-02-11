@@ -17,11 +17,16 @@ export function ArtCard({ art }: ArtCardProps) {
         <h3 className="font-semibold text-lg md:text-3xl">{art.title}</h3>
 
         <ul className="text-sm mb-5 lg:text-lg">
-          <li className="underline">{art.artist}</li>
+          <li className="underline">{art.arts_artist_id_fkey?.name}</li>
           <li><strong>Ano:</strong> {art.year}</li>
           <li><strong>Técnica:</strong> {art.technique}</li>
-          <li><strong>Dimensões:</strong> {art.width} x {art.height} cm</li>
+          <li>
+            <strong>Dimensões:</strong>{" "}
+            {art.width} x {art.height}
+            {art.depth ? ` x ${art.depth}` : ""} cm
+          </li>
         </ul>
+        
 
         <Link to={`/obras/${art.slug}`}>
           <Button variant="secondary">Adquirir</Button>

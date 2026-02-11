@@ -24,7 +24,7 @@ export function CarouselCard({art}: CarouselCardProps ) {
           </div>
 
           <div>
-            <h1 className="text-2xl mb-1 text-brown-900 lg:text-4xl">{art.artist}</h1>
+            <h1 className="text-2xl mb-1 text-brown-900 lg:text-4xl">{art.arts_artist_id_fkey?.name}</h1>
             <p className="text-xl text-brown-900">{art.title}</p>
             <p className="text-brown-900 font-inter hidden font-semibold mt-2 lg:block lg:mb-4 lg:text-lg">{art.description}</p>
             <ul className="text-sm leading-[1.3] mb-5 text-brown-900 font-inter font-semibold lg:text-md">

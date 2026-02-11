@@ -37,17 +37,20 @@ export function ArtDetails() {
           <h3 className="font-semibold text-lg mb-5 md:text-3xl">{art.title}</h3>
 
           <ul className="text-sm mb-5 lg:text-lg">
-            <li className="mb-3 underline">{art.artist}</li>
+            <li className="mb-3 underline">{art.arts_artist_id_fkey?.name ?? "Artista desconhecido"}</li>
             <li className="mb-3"><strong>Ano:</strong> {art.year}</li>
             <li className="mb-3"><strong>Técnica:</strong> {art.technique}</li>
             <li className="mb-3"><strong>Dimensões:</strong> {art.width} x {art.height} cm</li>
             <li className="mb-5">{art.description}</li>
           </ul>
+          
 
           <a href={`https://wa.me/5581997704302?text=${message}`} target="_blank">
             <Button>Adquirir</Button>
           </a>
+          
         </div>
+        <p>{art.arts_artist_id_fkey?.bio}</p>
 
       </div>
     </div>
