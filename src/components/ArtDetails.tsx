@@ -4,11 +4,13 @@ import { DetailsCard } from "./cards/DetailsCard"
 import { Button } from "./details/Button"
 import { ErrorPage } from "../errors/ErrorPage"
 import { DetailsCardSkeleton } from "../skeletons/DetailsCardSkeleton"
+import { ChevronDown } from "lucide-react"
+import { useState } from "react"
 
 export function ArtDetails() {
   const { slug } = useParams<{ slug: string }>()
   const { arts, loading } = useArts()
-
+  const [open, setOpen] = useState(false)
 
   const art = arts.find(item => item.slug === slug)
   if (loading) {
@@ -20,7 +22,7 @@ export function ArtDetails() {
       </div>
     );
   }
-  
+
   if (!art) {
     return <ErrorPage />
   }
@@ -43,16 +45,22 @@ export function ArtDetails() {
             <li className="mb-3"><strong>Dimensões:</strong> {art.width} x {art.height} cm</li>
             <li className="mb-5">{art.description}</li>
           </ul>
-          
+
 
           <a href={`https://wa.me/5581997704302?text=${message}`} target="_blank">
             <Button>Adquirir</Button>
           </a>
-          
-        </div>
-        <p>{art.arts_artist_id_fkey?.bio}</p>
 
+        </div>
       </div>
+
+      <button className="w-full" onClick={() => setOpen(!open)}>
+        <details className="mt-10">
+          <summary className="border p-3 text-lg no-marker cursor-pointer flex items-center justify-between">Saiba mais sobre o autor <ChevronDown /></summary>
+          <p>{art.arts_artist_id_fkey?.bio}</p>
+        </details>
+      </button>
+
     </div>
   )
 }

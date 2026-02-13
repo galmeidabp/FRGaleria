@@ -22,7 +22,6 @@ export function Header() {
 
         <ul className="hidden gap-5 text-lg md:flex">
           <li><LinkHeaders path="/" name="Home" /></li>
-          <li><LinkHeaders path="/artists" name="Artistas" /></li>
           <li><LinkHeaders path="/contact" name="Contato" /></li>
           <li><LinkHeaders path="/info" name="Informações" /></li>
         </ul>

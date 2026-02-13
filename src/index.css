@@ -11,6 +11,14 @@
       #a1843d);
 }
 
+details>summary.no-marker::-webkit-details-marker {
+  display: none !important;
+}
+
+details>summary.no-marker::marker {
+  content: "" !important;
+}
+
 @theme {
   --color-beige-100: #DCC285;
   --color-brown-900: #27180A;
@@ -60,6 +68,7 @@
     position: relative;
     display: inline-block;
   }
+
   .underline-gold-sm::after {
     content: "";
     position: absolute;

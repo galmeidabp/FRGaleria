@@ -26,7 +26,6 @@ export function ArtCard({ art }: ArtCardProps) {
             {art.depth ? ` x ${art.depth}` : ""} cm
           </li>
         </ul>
-        
 
         <Link to={`/obras/${art.slug}`}>
           <Button variant="secondary">Adquirir</Button>

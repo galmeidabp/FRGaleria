@@ -1,10 +1,15 @@
 import { useArts } from "../hook/useArts";
 import { ArtCardSkeleton } from "../skeletons/ArtCardSkeleton";
+import type { Art } from "../types/art";
 import { ArtCard } from "./cards/ArtCard";
 import { MainTitle } from "./details/MainTitle";
 
-export function Art() {
-  const { arts, loading, error } = useArts();
+interface ArtProps {
+  arts: Art[]
+}
+
+export function Art({ arts }: ArtProps) {
+  const { loading, error } = useArts();
 
   return (
     <div className="max-w-2xs m-auto mt-16 md:max-w-2xl lg:max-w-4xl">

@@ -30,7 +30,11 @@ export function CarouselCard({art}: CarouselCardProps ) {
             <ul className="text-sm leading-[1.3] mb-5 text-brown-900 font-inter font-semibold lg:text-md">
               <li><strong>Ano: </strong>{art.year}</li>
               <li><strong>Técnica: </strong> {art.technique}</li>
-              <li><strong>Dimensões: </strong>{art.width} x {art.height} cm</li>
+              <li>
+                <strong>Dimensões:</strong>{" "}
+                {art.width} x {art.height}
+                {art.depth ? ` x ${art.depth}` : ""} cm
+              </li>
             </ul>
             <Link to={`/obras/${art.slug}`}>
               <Button>Adquirir</Button>
