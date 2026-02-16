@@ -9,13 +9,11 @@ interface ArtProps {
 }
 
 export function Art({ arts }: ArtProps) {
-  const { loading, error } = useArts();
+  const { loading } = useArts();
 
   return (
     <div className="max-w-2xs m-auto mt-16 md:max-w-2xl lg:max-w-4xl">
       <MainTitle title="Obras" />
-
-      {error && <p>Erro ao carregar as obras.</p>}
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10 lg:gap-16">
         {loading
