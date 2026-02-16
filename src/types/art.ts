@@ -24,6 +24,6 @@ export type Art = {
   depth: number
   technique: string
   highlights: boolean
-  art_images: ArtImage[]
+  art_images_art_id_fkey?: ArtImage[]
   arts_artist_id_fkey: Artist | null
 }

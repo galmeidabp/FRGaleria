@@ -8,8 +8,8 @@ type DetailsCardProps = {
 export function DetailsCard({ art }: DetailsCardProps) {
   const images = [
     art.image_url,
-    ...(art.art_images?.map(img => img.url) || [])
-  ]
+    ...(art.art_images_art_id_fkey ?? []).map(img => img.url)
+  ].filter(Boolean)
   
   const [current, setCurrent] = useState(0)
   const [zoomOpen, setZoomOpen] = useState(false)
@@ -70,7 +70,7 @@ export function DetailsCard({ art }: DetailsCardProps) {
       <div className="flex gap-2 justify-center mt-4">
         {images.map((img, i) => (
           <img
-            key={i}
+            key={img}
             src={img}
             onClick={() => setCurrent(i)}
             className={`w-16 h-16 object-cover cursor-pointer rounded-md ${i === current ? "ring-2 ring-brown-900 scale-105" : "opacity-70"}`}

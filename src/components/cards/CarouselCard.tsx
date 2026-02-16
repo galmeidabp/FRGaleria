@@ -7,15 +7,17 @@ type CarouselCardProps = {
 }
 
 export function CarouselCard({art}: CarouselCardProps ) {
+  console.log("rota atual:", window.location.pathname)
+  console.log("rota destino:", `/obras/${art.slug}`)
   return (
     <div
       className="relative w-full h-full bg-cover bg-center"
       style={{ backgroundImage: `url(${art.image_url})` }}
     >
 
-      <div className="absolute inset-0 bg-[#BCA086]/80"></div>
+      <div className="absolute inset-0 bg-[#BCA086]/80 pointer-events-none z-0"></div>
 
-      <div className="relative z-10 flex h-full items-center justify-center">
+      <div className="relative z-20 flex h-full items-center justify-center">
 
 
         <div className="flex gap-3 flex-col max-w-2xs m-auto py-10 md:max-w-2xl md:py-18 md:flex-row md:items-center md:gap-10 lg:max-w-4xl">

@@ -1,7 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { Breadcrumb } from "../components/details/Breadcrumb";
 import { useDeferredValue } from "react";
 import { PageLoader } from "../loaders/PageLoader";
 
@@ -17,7 +16,6 @@ export function MainLayout() {
 
       <Header />
       <main className="flex-1">
-        <Breadcrumb />
         <Outlet />
       </main>
       <a

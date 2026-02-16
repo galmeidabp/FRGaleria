@@ -4,7 +4,7 @@ import { DetailsCard } from "./cards/DetailsCard"
 import { Button } from "./details/Button"
 import { ErrorPage } from "../errors/ErrorPage"
 import { DetailsCardSkeleton } from "../skeletons/DetailsCardSkeleton"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, Info } from "lucide-react"
 import { useState } from "react"
 
 export function ArtDetails() {
@@ -42,7 +42,11 @@ export function ArtDetails() {
             <li className="mb-3 underline">{art.arts_artist_id_fkey?.name ?? "Artista desconhecido"}</li>
             <li className="mb-3"><strong>Ano:</strong> {art.year}</li>
             <li className="mb-3"><strong>Técnica:</strong> {art.technique}</li>
-            <li className="mb-3"><strong>Dimensões:</strong> {art.width} x {art.height} cm</li>
+            <li className="mb-3">
+              <strong>Dimensões:</strong>{" "}
+              {art.width} x {art.height}
+              {art.depth ? ` x ${art.depth}` : ""} cm
+            </li>
             <li className="mb-5">{art.description}</li>
           </ul>
 
@@ -54,12 +58,32 @@ export function ArtDetails() {
         </div>
       </div>
 
-      <button className="w-full" onClick={() => setOpen(!open)}>
-        <details className="mt-10">
-          <summary className="border p-3 text-lg no-marker cursor-pointer flex items-center justify-between">Saiba mais sobre o autor <ChevronDown /></summary>
-          <p>{art.arts_artist_id_fkey?.bio}</p>
-        </details>
-      </button>
+      <div className="mt-25">
+        <button
+          onClick={() => setOpen(!open)}
+          className="w-full p-3 text-md flex items-center justify-between rounded-md hover:cursor-pointer hover:bg-gray-100 md:text-lg"
+        >
+          <div className="flex gap-2 md:gap-3"><Info /> Saiba mais sobre o autor</div>
+
+          <ChevronDown
+            className={`
+        transition-transform duration-300
+        ${open ? "rotate-180" : ""}
+      `}
+          />
+        </button>
+
+        <div
+          className={`
+      overflow-hidden transition-all duration-500 ease-in-out
+      ${open ? "max-h-full opacity-100" : "max-h-0 opacity-0"}
+    `}
+        >
+          <p className="p-5 text-gray-800 rounded-md">
+            {art.arts_artist_id_fkey?.bio}
+          </p>
+        </div>
+      </div>
 
     </div>
   )

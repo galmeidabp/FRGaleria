@@ -72,11 +72,6 @@ export function Header() {
           </li>
 
           <li onClick={toggleMenu} className="underline-gold-sm flex items-center justify-between pb-2">
-            <LinkHeaders path="/artists" name="Artistas" />
-            <ChevronRight className="text-beige-100" size={16} />
-          </li>
-
-          <li onClick={toggleMenu} className="underline-gold-sm flex items-center justify-between pb-2">
             <LinkHeaders path="/contact" name="Contato" />
             <ChevronRight className="text-beige-100" size={16} />
           </li>
