@@ -11,7 +11,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-center gap-1 md:border-x">
-          <h4 className="text-gradient-gold text-4xl font-italianno lg:text-4xl">Nos contate</h4>
+          <h4 className="text-gradient-gold text-4xl font-italianno lg:text-4xl">Contato</h4>
           <a className="flex gap-2 items-center text-xs md:text-sm hover:text-yellow-100" href="mailto:frgaleriadearte@gmail.com?subject=Contato pelo site"><Mail size={18} /> frgaleriadearte@gmail.com</a>
           <a className="flex gap-2 items-center text-xs md:text-sm hover:text-yellow-100" href="https://wa.me/5581997704302?text=Olá,%20vim%20pelo%20site" target="_blank" rel="noopener noreferrer"><Phone size={18} /> 81 9999 9999</a>
           <a className="flex gap-2 items-center text-xs md:text-sm hover:text-yellow-100" href="https://www.instagram.com/frgaleriadearte/" target="_blank" rel="noopener noreferrer"><Instagram size={18} /> @frgaleriadearte</a>

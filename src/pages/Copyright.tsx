@@ -16,7 +16,7 @@ export function Copyright() {
       <p>São preservados os direitos de autoria, integridade da obra e reconhecimento do criador.</p>
 
       <h3 className="text-lg font-bold mt-5">5. Medidas legais</h3>
-      <p>O uso idnevido poderá resultar em medidas legais cabíveis, conforme a legislação vigente.</p>
+      <p>O uso indevido poderá resultar em medidas legais cabíveis, conforme a legislação vigente.</p>
 
     </div>
   )

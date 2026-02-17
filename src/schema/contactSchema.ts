@@ -6,6 +6,11 @@ export const contactSchema = z.object({
     .min(2, "Nome deve ter no mínimo 2 caracteres")
     .regex(/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/, "Nome não pode conter números ou símbolos"),
 
+  phone: z
+    .string()
+    .min(9, "Telefone inválido")
+    .regex(/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/, "Formato inválido"),
+
   email: z
     .string()
     .email("Email inválido"),

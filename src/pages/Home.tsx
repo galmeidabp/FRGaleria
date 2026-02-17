@@ -7,7 +7,7 @@ import { CarouselSkeleton } from "../skeletons/CarouselSkeleton";
 export function Home() {
   const { arts, carouselArts, loading } = useArts()
 
-  const itemsPerPage = 20
+  const itemsPerPage = 10
   const [currentPage, setCurrentPage] = useState(1)
 
   const totalPages = Math.ceil(arts.length / itemsPerPage)
@@ -16,7 +16,6 @@ export function Home() {
   const endIndex = startIndex + itemsPerPage
 
   const currentArts = arts.slice(startIndex, endIndex)
-
 
   return (
     <div>
@@ -62,9 +61,9 @@ export function Home() {
           }
           disabled={currentPage === totalPages}
           className={`
-      text-xl transition-opacity
-      ${currentPage === totalPages ? "opacity-30 cursor-not-allowed" : "hover:scale-110 cursor-pointer hover:bg-gray-300 w-5 hover:rounded-md"}
-    `}
+            text-xl transition-opacity
+            ${currentPage === totalPages ? "opacity-30 cursor-not-allowed" : "hover:scale-110 cursor-pointer hover:bg-gray-300 w-5 hover:rounded-md"}
+          `}
         >
           ›
         </button>

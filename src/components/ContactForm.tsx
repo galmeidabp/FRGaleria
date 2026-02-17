@@ -50,8 +50,6 @@ export function ContactForm() {
 
       if (!res.ok) throw new Error("Erro ao enviar")
 
-      console.log("Email enviado com sucesso")
-
       setSuccess(true)
     } catch (err) {
       console.error("Erro ao enviar email", err)
@@ -93,6 +91,23 @@ export function ContactForm() {
         />
       </div>
 
+      <div className="flex flex-col gap-y-1.5">
+        <label
+          className="block font-inter text-brown-900"
+          htmlFor="phone"
+        >
+         Seu Telefone
+        </label>
+
+        <input
+          id="phone"
+          type="tel"
+          disabled={isSubmitting}
+          className={inputClass(!!errors.phone, isSubmitting)}
+          {...register("phone")}
+        />
+      </div>
+
 
       <div className="flex flex-col gap-y-1.5">
         <label
@@ -131,7 +146,7 @@ export function ContactForm() {
 
       <label className="flex gap-2 text-xs lg:text-smz">
         <input type="checkbox" className="outline-none cursor-pointer" value="sim" {...register("newsletter")} />
-        Quero receber novidades através do email
+        Quero receber novidades através do Email e WhatsApp
       </label>
 
 

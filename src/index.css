@@ -3,6 +3,7 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light;
   font-family: 'Inter', sans-serif;
   --gradient-gold: linear-gradient(90deg,
       #dcc285,
