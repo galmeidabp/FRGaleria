@@ -1,6 +1,6 @@
 export function CookiePolicy() {
   return (
-    <div className="max-w-2xs m-auto mt-16 md:max-w-2xl lg:max-w-4xl">
+    <div className="max-w-2xs m-auto mt-10 md:max-w-2xl lg:max-w-4xl">
       <h2 className="text-3xl uppercase font-semibold mb-5">Política de cookies</h2>
       <h3 className="text-lg font-bold mt-5">1. O que são cookies</h3>
       <p>Cookies são pequenos arquivos armazenados no dispositivo do usuário que auxiliam no funcionamento do site.</p>

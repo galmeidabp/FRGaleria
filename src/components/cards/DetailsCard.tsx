@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import type { Art } from "../../types/art"
+import { Link } from "react-router-dom"
+import { ChevronLeft } from "lucide-react"
 
 type DetailsCardProps = {
   art: Art
@@ -40,8 +42,9 @@ export function DetailsCard({ art }: DetailsCardProps) {
 
   return (
     <div className="w-full">
+      <Link to="/" className="flex items-center gap-1 text-gray-500 text-xs cursor-pointer hover:text-gray-400 md:text-sm"><ChevronLeft size={18} />Ir para a página principal</Link>
       {/* MAIN IMAGE */}
-      <div className="relative w-[288px] h-[288px] group flex justify-center m-auto overflow-hidden md:w-115 md:h-100">
+      <div className="relative w-[288px] h-[288px] group flex justify-center m-auto mt-8 overflow-hidden md:w-115 md:h-100">
         <img
           src={images[current]}
           onClick={() => {

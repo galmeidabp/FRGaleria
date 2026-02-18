@@ -5,7 +5,7 @@ import { MainTitle } from "../components/details/MainTitle";
 export function Contact() {
   return (
     <>
-      <div className="max-w-2xs m-auto mt-16 md:max-w-2xl lg:max-w-4xl">
+      <div className="max-w-2xs m-auto mt-10 md:max-w-2xl lg:max-w-4xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="">
             <MainTitle title="Nos contate" />

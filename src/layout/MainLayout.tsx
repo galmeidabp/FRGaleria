@@ -15,7 +15,7 @@ export function MainLayout() {
       {loading && <PageLoader />}
 
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 pt-20">
         <Outlet />
       </main>
       <a

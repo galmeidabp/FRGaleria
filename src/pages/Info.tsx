@@ -3,7 +3,7 @@ import { MainTitle } from "../components/details/MainTitle";
 export function Info() {
   return (
     <>
-      <div className="max-w-2xs m-auto mt-16 md:max-w-2xl lg:max-w-4xl">
+      <div className="max-w-2xs m-auto mt-10 md:max-w-2xl lg:max-w-4xl">
         <MainTitle title="Sobre nós" />
 
         <div className="flex flex-col gap-3 text-sm text-brown-900 font-inter md:text-md">

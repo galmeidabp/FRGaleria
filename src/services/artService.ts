@@ -9,7 +9,7 @@ export async function getArts(search?: string) {
        arts_artist_id_fkey(*)
       `
     )
-    .order("created_at", { ascending: false });
+    .order("created_at", { ascending: true });
 
   if (search && search.trim() !== "") {
     query = query.or(
@@ -30,7 +30,7 @@ export async function getCarouselArts() {
       `
     )
     .eq("carousel", true)
-    .order("created_at", { ascending: false });
+    .order("carousel_order", { ascending: true, nullsFirst: false });
 }
 
 

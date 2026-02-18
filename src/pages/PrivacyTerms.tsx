@@ -1,6 +1,6 @@
 export function PrivacyTerms() {
   return (
-    <div className = "max-w-2xs m-auto mt-16 md:max-w-2xl lg:max-w-4xl">
+    <div className = "max-w-2xs m-auto mt-10 md:max-w-2xl lg:max-w-4xl">
       <h2 className="text-3xl uppercase font-semibold mb-5">Política de privacidade</h2>
       <p>Esta Política de Privacidade descreve como os dados pessoais são coletados, utilizados, armazenados e protegidos ao utilizar este site.</p>
       <h3 className="text-lg font-bold mt-5">1. Coleta de dados</h3>

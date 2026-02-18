@@ -1,16 +1,40 @@
 import { ChevronRight, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LinkHeaders } from "../components/details/LinksHeader";
 
 export function Header() {
   const [openMenu, setOpenMenu] = useState(false)
+  const [show, setShow] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
   function toggleMenu() {
     setOpenMenu((atualState) => !atualState)
   }
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // rolando para baixo
+        setShow(false)
+      } else {
+        // rolando para cima
+        setShow(true)
+      }
+
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [lastScrollY])
+
+
   return (
-    <div className="bg-green-900">
+    <header className={`bg-green-900 fixed top-0 left-0 w-full transition-transform duration-300 z-80 ${
+      show ? "translate-y-0" : "-translate-y-full"
+    }`}>
       <div className="flex justify-between max-w-2xs gap-3 m-auto items-center py-3 md:max-w-2xl lg:max-w-4xl">
 
         <a href="/" className="flex gap-3 items-center">
@@ -66,23 +90,29 @@ export function Header() {
         </div>
 
         <ul className="flex flex-col p-5 gap-3">
-          <li onClick={toggleMenu} className="underline-gold-sm flex items-center justify-between pb-2">
-            <LinkHeaders path="/" name="Home" />
-            <ChevronRight className="text-beige-100" size={16} />
+          <li onClick={toggleMenu} className="underline-gold-sm pb-2">
+            <a className="flex justify-between items-center text-beige-100" href="/">
+              Home 
+              <ChevronRight size={16} />
+            </a>
           </li>
 
-          <li onClick={toggleMenu} className="underline-gold-sm flex items-center justify-between pb-2">
-            <LinkHeaders path="/contact" name="Contato" />
-            <ChevronRight className="text-beige-100" size={16} />
+          <li onClick={toggleMenu} className="underline-gold-sm pb-2">
+            <a className="flex justify-between items-center text-beige-100" href="/contact">
+              Contato
+              <ChevronRight size={16} />
+            </a>
           </li>
 
-          <li onClick={toggleMenu} className="underline-gold-sm flex items-center justify-between pb-2">
-            <LinkHeaders path="/info" name="Informações" />
-            <ChevronRight className="text-beige-100" size={16} />
+          <li onClick={toggleMenu} className="underline-gold-sm pb-2">
+            <a className="flex justify-between items-center text-beige-100" href="/info">
+              Informações
+              <ChevronRight size={16} />
+            </a>
           </li>
         </ul>
       </nav>
-    </div>
+    </header>
   )
 
 }

@@ -1,6 +1,6 @@
 export function TermsOfUse() {
   return (
-    <div className="max-w-2xs m-auto mt-16 md:max-w-2xl lg:max-w-4xl">
+    <div className="max-w-2xs m-auto mt-10 md:max-w-2xl lg:max-w-4xl">
       <h2 className="text-3xl uppercase font-semibold mb-5">Termos de uso</h2>
       <h3 className="text-lg font-bold mt-5">1. Natureza do site</h3>
       <p>Esse site possui caráter institucional e expositivo, funcionando como vitrine informativa de conteúdos, serviços e obras. Não se configura como plataforma de venda, intermediação comercial ou transação financeira.</p>

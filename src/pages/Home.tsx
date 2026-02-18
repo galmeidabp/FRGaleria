@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Art } from "../components/Art";
 import { Carousel } from "../components/Carousel";
 import { useArts } from "../hook/useArts";
@@ -13,6 +13,9 @@ export function Home() {
   const itemsPerPage = 20;
   const [currentPage, setCurrentPage] = useState(1);
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [currentPage])
 
   const totalPages = Math.ceil(filteredArts.length / itemsPerPage);
 
@@ -38,7 +41,7 @@ export function Home() {
         />
       </div>
 
-      <Art arts={currentArts} loading={loading} />
+      <div id="arts-start"><Art arts={currentArts} loading={loading} /></div>
 
       {!loading && filteredArts.length > 0 && (
         <div className="flex items-center justify-center gap-6 mt-20">

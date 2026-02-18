@@ -1,6 +1,6 @@
 export function Copyright() {
   return (
-    <div className="max-w-2xs m-auto mt-16 md:max-w-2xl lg:max-w-4xl">
+    <div className="max-w-2xs m-auto mt-10 md:max-w-2xl lg:max-w-4xl">
       <h2 className="text-3xl uppercase font-semibold mb-5">Direitos autorais e uso de imagem</h2>
 
       <h3 className="text-lg font-bold mt-5">1. Propriedade do conteúdo</h3>
