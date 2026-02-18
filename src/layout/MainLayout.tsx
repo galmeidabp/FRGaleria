@@ -19,7 +19,7 @@ export function MainLayout() {
         <Outlet />
       </main>
       <a
-        href="https://wa.me/5581997704302?text=Olá!%20Vim%20pelo%20site"
+        href="https://wa.me/558191313343?text=Olá!%20Vim%20pelo%20site"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-5 right-5 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full w-16 shadow-lg z-50 lg:w-20"

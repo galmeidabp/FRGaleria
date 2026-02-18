@@ -9,24 +9,26 @@ import { PrivacyTerms } from "./pages/PrivacyTerms";
 import { TermsOfUse } from "./pages/TermsOfUse";
 import { CookiePolicy } from "./pages/CookiePolicy";
 import { Copyright } from "./pages/Copyright";
+import { ScrollToTop } from "./components/details/ScrollToTop";
 
 export function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<MainLayout />} >
-          <Route path="/" element={<Home />} />
-          <Route path="/obras/:slug" element={<ArtDetails />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/info" element={<Info />} />
-          <Route path="*" element={<ErrorPage />} />
-          <Route path="/privacyterms" element={<PrivacyTerms />} />
-          <Route path="/termsofuse" element={<TermsOfUse />} />
-          <Route path="/cookiepolicy" element={<CookiePolicy />} />
-          <Route path="/copyright" element={<Copyright />} />
-        </Route>
-      </Routes>
+      <ScrollToTop />
+        <Routes>
+          <Route element={<MainLayout />} >
+            <Route path="/" element={<Home />} />
+            <Route path="/obras/:slug" element={<ArtDetails />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/info" element={<Info />} />
+            <Route path="*" element={<ErrorPage />} />
+            <Route path="/privacyterms" element={<PrivacyTerms />} />
+            <Route path="/termsofuse" element={<TermsOfUse />} />
+            <Route path="/cookiepolicy" element={<CookiePolicy />} />
+            <Route path="/copyright" element={<Copyright />} />
+          </Route>
+        </Routes>
     </BrowserRouter>
   )
 }

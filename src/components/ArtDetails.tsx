@@ -48,7 +48,7 @@ export function ArtDetails() {
           </ul>
 
 
-          <a href={`https://wa.me/5581997704302?text=${message}`} target="_blank">
+          <a href={`https://wa.me/558191313343?text=${message}`} target="_blank">
             <Button>Adquirir</Button>
           </a>
 
