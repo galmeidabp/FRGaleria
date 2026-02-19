@@ -64,7 +64,7 @@ export function CarouselCard({ art }: CarouselCardProps) {
             onClick={() => setOpen(false)}
           />
 
-          <div className="relative z-50 bg-white w-[90%] max-w-2xl max-h-[80vh] rounded-xl shadow-lg p-6 flex flex-col">
+          <div className="relative z-50 bg-white w-[90%] max-w-2xl max-h-[75vh] md:max-h-[40vh] rounded-xl shadow-lg p-6 flex flex-col">
             <div className="flex justify-between items-center mb-4">
               <div className="flex flex-col gap-0 text-2xl font-semibold md:flex-row md:gap-3">
                 <h2>
