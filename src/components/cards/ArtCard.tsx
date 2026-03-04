@@ -5,9 +5,10 @@ import { useEffect, useState } from "react"
 
 type ArtCardProps = {
   art: Art
+  currentPage: number
 }
 
-export function ArtCard({ art }: ArtCardProps) {
+export function ArtCard({ art, currentPage }: ArtCardProps) {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -17,6 +18,15 @@ export function ArtCard({ art }: ArtCardProps) {
       document.body.style.overflow = "auto"
     }
   }, [open])
+
+  useEffect(() => {
+    const saved = sessionStorage.getItem("scrollPosition");
+
+    if (saved) {
+      window.scrollTo(0, Number(saved));
+      sessionStorage.removeItem("scrollPosition");
+    }
+  }, []);
 
   return (
     <>
@@ -41,10 +51,15 @@ export function ArtCard({ art }: ArtCardProps) {
             <li><button onClick={() => setOpen(true)} className="text-green-900 underline cursor-pointer hover:text-green-900/70">Biografia do autor</button></li>
           </ul>
 
-          
 
 
-          <Link to={`/obras/${art.slug}`}>
+
+          <Link to={`/obras/${art.slug}`}
+            onClick={() => {
+              sessionStorage.setItem("scrollPosition", String(window.scrollY));
+              sessionStorage.setItem("savedPage", String(currentPage));
+            }}
+          >
             <Button variant="secondary">Mais informações</Button>
           </Link>
         </div>

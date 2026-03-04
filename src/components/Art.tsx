@@ -6,9 +6,10 @@ import { MainTitle } from "./details/MainTitle";
 interface ArtProps {
   arts: Art[];
   loading: boolean;
+  currentPage: number;
 }
 
-export function Art({ arts, loading }: ArtProps) {
+export function Art({ arts, loading, currentPage }: ArtProps) {
   return (
     <div className="max-w-2xs m-auto mt-16 md:max-w-2xl lg:max-w-4xl">
       <MainTitle title="Obras" />
@@ -19,7 +20,7 @@ export function Art({ arts, loading }: ArtProps) {
             <ArtCardSkeleton key={i} />
           ))
           : arts.map((art) => (
-            <ArtCard key={art.id} art={art} />
+            <ArtCard key={art.id} art={art} currentPage={currentPage} />
           ))}
       </div>
     </div>

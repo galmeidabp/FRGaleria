@@ -11,7 +11,14 @@ export function Home() {
   const { query, setQuery, filteredArts } = useArtSearch(arts);
 
   const itemsPerPage = 20;
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(() => {
+    const saved = sessionStorage.getItem("savedPage");
+    if (saved) {
+      sessionStorage.removeItem("savedPage");
+      return Number(saved);
+    }
+    return 1;
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -41,7 +48,7 @@ export function Home() {
         />
       </div>
 
-      <div id="arts-start"><Art arts={currentArts} loading={loading} /></div>
+      <div id="arts-start"><Art arts={currentArts} loading={loading} currentPage={currentPage} /></div>
 
       {!loading && filteredArts.length > 0 && (
         <div className="flex items-center justify-center gap-6 mt-20">

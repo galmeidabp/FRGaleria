@@ -27,6 +27,7 @@ export function Footer() {
  
       </div>
       <p className="flex max-w-2xs m-auto items-center justify-center text-beige-100 text-[10px] mt-10 md:max-w-2xl">&copy; 2026 FR Galeria de Arte. Todos os direitos reservados.</p>
+      <p className="flex max-w-2xs m-auto items-center justify-center text-beige-100 text-[10px] md:max-w-2xl">FR Galeria de Arte CNPJ: 65.400.249/0001-30</p>
     </div>
   )
 }
