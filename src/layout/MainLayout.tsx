@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { useDeferredValue } from "react";
+import { useDeferredValue, useState } from "react";
 import { PageLoader } from "../loaders/PageLoader";
 
 export function MainLayout() {
@@ -9,14 +9,15 @@ export function MainLayout() {
   const deferredPath = useDeferredValue(location.pathname);
 
   const loading = deferredPath !== location.pathname;
+  const [zoomOpen, setZoomOpen] = useState(false)
 
   return (
     <div className="min-h-screen flex flex-col">
       {loading && <PageLoader />}
 
-      <Header />
+      <Header hidden={zoomOpen} />
       <main className="flex-1 pt-20">
-        <Outlet />
+        <Outlet context={{setZoomOpen}} />
       </main>
       <a
         href="https://wa.me/558191313343?text=Olá!%20Vim%20pelo%20site"

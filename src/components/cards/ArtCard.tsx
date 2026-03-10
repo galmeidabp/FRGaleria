@@ -2,6 +2,7 @@ import type { Art } from "../../types/art"
 import { Link } from "react-router-dom"
 import { Button } from "../details/Button"
 import { useEffect, useState } from "react"
+import { formatPrice } from "../../utils/formatPrice"
 
 type ArtCardProps = {
   art: Art
@@ -38,7 +39,7 @@ export function ArtCard({ art, currentPage }: ArtCardProps) {
         <div>
           <h3 className="font-semibold text-lg md:text-3xl">{art.title}</h3>
 
-          <ul className="text-sm mb-5 lg:text-lg">
+          <ul className="text-sm mb-3 lg:text-lg">
             <li>{art.arts_artist_id_fkey?.name}</li>
             <li><strong>Ano:</strong> {art.year}</li>
             <li><strong>Técnica:</strong> {art.technique}</li>
@@ -50,6 +51,8 @@ export function ArtCard({ art, currentPage }: ArtCardProps) {
             <li><strong>Assinado:</strong> {art.signed}</li>
             <li><button onClick={() => setOpen(true)} className="text-green-900 underline cursor-pointer hover:text-green-900/70">Biografia do autor</button></li>
           </ul>
+
+          <p className="mb-3 text-xl font-semibold">{formatPrice(art.price)}</p>
 
 
 
@@ -68,7 +71,7 @@ export function ArtCard({ art, currentPage }: ArtCardProps) {
 
 
       {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center">
           <div
             className="absolute inset-0 bg-black/60 "
             onClick={() => setOpen(false)}

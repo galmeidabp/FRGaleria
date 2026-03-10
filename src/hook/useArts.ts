@@ -14,8 +14,21 @@ export function useArts(search?: string) {
       const { data: artsData } = await getArts(search ?? "");
       const { data: carouselData } = await getCarouselArts();
 
-      if (artsData) setArts(artsData);
-      if (carouselData) setCarouselArts(carouselData);
+      if (artsData) {
+        const normalizedArts = artsData.map((art) => ({
+          ...art,
+          price: Number(art.price),
+        }));
+        setArts(normalizedArts);
+      }
+
+      if (carouselData) {
+        const normalizedCarousel = carouselData.map((art) => ({
+          ...art,
+          price: Number(art.price),
+        }));
+        setCarouselArts(normalizedCarousel);
+      }
 
       setLoading(false);
     };
@@ -25,8 +38,6 @@ export function useArts(search?: string) {
 
   return { arts, carouselArts, loading };
 }
-
-
 
 {/* hook de dominio (domain hook) - centraliza a lógica de carregamento de obras, como uma api interna */ }
 {/* ESTADO + CACHE + LOADING*/ }

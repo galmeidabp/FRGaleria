@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { Button } from "../details/Button"
 import type { Art } from "../../types/art"
 import { useEffect, useState } from "react"
+import { formatPrice } from "../../utils/formatPrice"
 
 type CarouselCardProps = {
   art: Art
@@ -17,6 +18,7 @@ export function CarouselCard({ art }: CarouselCardProps) {
       document.body.style.overflow = "auto"
     }
   }, [open])
+  
   return (
     <>
       <div
@@ -49,6 +51,9 @@ export function CarouselCard({ art }: CarouselCardProps) {
                 <li><strong>Assinado:</strong> {art.signed}</li>
                 <li><button onClick={() => setOpen(true)} className="text-green-900 underline cursor-pointer hover:text-green-900/70">Biografia do autor</button></li>
               </ul>
+
+              <p className="mb-3 text-2xl font-semibold">{formatPrice(art.price)}</p>
+
               <Link to={`/obras/${art.slug}`}>
                 <Button>Mais informações</Button>
               </Link>

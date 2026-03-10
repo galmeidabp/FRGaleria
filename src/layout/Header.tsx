@@ -2,7 +2,11 @@ import { ChevronRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { LinkHeaders } from "../components/details/LinksHeader";
 
-export function Header() {
+type HeaderProps = {
+  hidden?: boolean
+}
+
+export function Header({ hidden }: HeaderProps) {
   const [openMenu, setOpenMenu] = useState(false)
   const [show, setShow] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
@@ -16,10 +20,8 @@ export function Header() {
       const currentScrollY = window.scrollY
 
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // rolando para baixo
         setShow(false)
       } else {
-        // rolando para cima
         setShow(true)
       }
 
@@ -30,11 +32,13 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [lastScrollY])
 
+  if (hidden) return null
 
   return (
-    <header className={`bg-green-900 fixed top-0 left-0 w-full transition-transform duration-300 z-80 ${
-      show ? "translate-y-0" : "-translate-y-full"
-    }`}>
+    <header
+      className={`bg-green-900 fixed top-0 left-0 w-full transition-transform duration-300 z-80 ${show ? "translate-y-0" : "-translate-y-full"
+        }`}
+    >
       <div className="flex justify-between max-w-2xs gap-3 m-auto items-center py-3 md:max-w-2xl lg:max-w-4xl">
 
         <a href="/" className="flex gap-3 items-center">
@@ -59,7 +63,6 @@ export function Header() {
             <Menu size={24} className="text-beige-100" />
           </button>
         </div>
-
       </div>
 
       {openMenu && (
@@ -68,10 +71,9 @@ export function Header() {
 
       <nav
         className={`${openMenu ? "translate-x-0" : "translate-x-full"} 
-      fixed right-0 top-0 w-50 h-screen flex flex-col 
-      bg-green-900 z-50 transform transition-transform duration-300`}
+        fixed right-0 top-0 w-50 h-screen flex flex-col 
+        bg-green-900 z-50 transform transition-transform duration-300`}
       >
-
         <div className="flex justify-between items-start m-3 underline-gold-sm pb-2">
           <a href="/">
             <img src="/logo.svg" alt="" className="w-14" />
@@ -92,7 +94,7 @@ export function Header() {
         <ul className="flex flex-col p-5 gap-3">
           <li onClick={toggleMenu} className="underline-gold-sm pb-2">
             <a className="flex justify-between items-center text-beige-100" href="/">
-              Home 
+              Home
               <ChevronRight size={16} />
             </a>
           </li>
@@ -114,5 +116,4 @@ export function Header() {
       </nav>
     </header>
   )
-
 }

@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react"
 import type { Art } from "../../types/art"
-import { Link } from "react-router-dom"
+import { Link, useOutletContext } from "react-router-dom"
 import { ChevronLeft } from "lucide-react"
-
 type DetailsCardProps = {
   art: Art
 }
 
+type LayoutContext = {
+  setZoomOpen: (open: boolean) => void
+}
+
 export function DetailsCard({ art }: DetailsCardProps) {
+
+  const { setZoomOpen: setLayoutZoomOpen } = useOutletContext<LayoutContext>()
+
   const images = [
     art.image_url,
     ...(art.art_images_art_id_fkey ?? []).map(img => img.url)
   ].filter(Boolean)
-  
+
   const [current, setCurrent] = useState(0)
   const [zoomOpen, setZoomOpen] = useState(false)
   const [scale, setScale] = useState(1)
@@ -40,17 +46,29 @@ export function DetailsCard({ art }: DetailsCardProps) {
     return () => window.removeEventListener("wheel", handleWheel)
   }, [zoomOpen])
 
+  function openZoom() {
+    setZoomOpen(true)
+    setLayoutZoomOpen(true)
+    setScale(1)
+  }
+
+  function closeZoom() {
+    setZoomOpen(false)
+    setLayoutZoomOpen(false)
+  }
+
   return (
     <div className="w-full">
-      <Link to="/" className="flex items-center gap-1 text-gray-500 text-xs cursor-pointer hover:text-gray-400 md:text-sm"><ChevronLeft size={18} />Ir para a página principal</Link>
+      <Link to="/" className="flex items-center gap-1 text-gray-500 text-xs cursor-pointer hover:text-gray-400 md:text-sm">
+        <ChevronLeft size={18} />
+        Ir para a página principal
+      </Link>
+
       {/* MAIN IMAGE */}
       <div className="relative w-[288px] h-[288px] group flex justify-center m-auto mt-8 overflow-hidden md:w-115 md:h-100">
         <img
           src={images[current]}
-          onClick={() => {
-            setZoomOpen(true)
-            setScale(1)
-          }}
+          onClick={openZoom}
           className="object-contain max-h-full max-w-full cursor-zoom-in transition-all duration-500"
         />
 
@@ -83,7 +101,10 @@ export function DetailsCard({ art }: DetailsCardProps) {
 
       {/* ZOOM */}
       {zoomOpen && (
-        <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center" onClick={() => setZoomOpen(false)}>
+        <div
+          className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center"
+          onClick={closeZoom}
+        >
           <img
             src={images[current]}
             style={{ transform: `scale(${scale})` }}
